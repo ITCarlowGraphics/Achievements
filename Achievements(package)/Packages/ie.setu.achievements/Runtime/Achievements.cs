@@ -3,26 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Achievemnts : MonoBehaviour
+public class Achievements : MonoBehaviour
 {
     private Dictionary<string, Action<int>> eventDictionary = new Dictionary<string, Action<int>>();
 
-    public static Achievemnts _instance;
+    public static Achievements _instance;
 
-    public static Achievemnts Instance
+    public static Achievements Instance
     {
         get
         {
             if (_instance == null)
             {
                 // Check if an existing GameManager is present in the scene
-                _instance = FindObjectOfType<Achievemnts>();
+                _instance = FindObjectOfType<Achievements>();
 
                 if (_instance == null)
                 {
                     // No existing GameManager found, so create a new GameObject and add this script
                     GameObject a = new GameObject("Achievemnts");
-                    _instance = a.AddComponent<Achievemnts>();
+                    _instance = a.AddComponent<Achievements>();
 
                     // Optionally, make this object persistent
                     DontDestroyOnLoad(a);
