@@ -9,18 +9,20 @@ public class Achievements : MonoBehaviour
 
     public static Achievements _instance;
 
+    private int QuestionCorrectByCurrentPlayer = 0;
+
     public static Achievements Instance
     {
         get
         {
             if (_instance == null)
             {
-                // Check if an existing GameManager is present in the scene
+                // Check if an existing achievemnts is present in the scene
                 _instance = FindObjectOfType<Achievements>();
 
                 if (_instance == null)
                 {
-                    // No existing GameManager found, so create a new GameObject and add this script
+                    // No existing achievemnts found, so create a new achievemnts and add this script
                     GameObject a = new GameObject("Achievemnts");
                     _instance = a.AddComponent<Achievements>();
 
@@ -32,32 +34,9 @@ public class Achievements : MonoBehaviour
         }
     }
 
-    public void Subscribe(string eventType, Action<int> listener)
+    public static void recordEvent(int i)
     {
-        if (!eventDictionary.ContainsKey(eventType))
-        {
-            eventDictionary.Add(eventType, listener);
-        }
-        else
-        {
-            eventDictionary[eventType] += listener;
-        }
-    }
-
-    public void Unsubscribe(string eventType, Action<int> listener)
-    {
-        if (eventDictionary.ContainsKey(eventType))
-        {
-            eventDictionary[eventType] -= listener;
-        }
-    }
-
-    public void RaiseEvent(string eventType, int param)
-    {
-        if (eventDictionary.ContainsKey(eventType))
-        {
-            eventDictionary[eventType]?.Invoke(param);
-        }
+        Debug.Log("Hey");
     }
 }
 
